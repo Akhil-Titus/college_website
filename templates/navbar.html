@@ -24,11 +24,19 @@
                 </div>
             </li>
         </ul>
+
+        {% if user.is_authenticated %}
         <ul class="navbar-nav ml-auto"> <!-- Use ml-auto to push items to the right -->
-         <li class="nav-item"><a class="nav-link" href="{% url 'credentials_app:login' %}">Login</a></li>
-         <li class="nav-item"><a class="nav-link" href="{% url 'credentials_app:register' %}">Register</a></li>
-       </ul>
-    </nav>
+            <li class="nav-item"><a class="nav-link" href="">Hello {{user.username}}</a></li>
+            <li class="nav-item"><a class="nav-link" href="credentials_app/logout">Logout</a></li>
+          </ul>
+        {% else %}
+        <ul class="navbar-nav ml-auto"> <!-- Use ml-auto to push items to the right -->
+            <li class="nav-item"><a class="nav-link" href="{% url 'credentials_app:login' %}">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'credentials_app:register' %}">Register</a></li>
+          </ul>
+        {% endif %}
+
 
     <!-- Include Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -51,8 +51,12 @@
 <!--                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>-->
               </div>
 
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
-
+              <!-- <input type="submit" value="Log In" class="btn btn-block btn-primary">
+              <a href="{% url 'credentials_app:register' %}">Register</a> -->
+              <div class="text-center">
+                <input type="submit" value="Log In" class="btn btn-block btn-primary mb-3">
+                <p><a href="{% url 'credentials_app:register' %}" class="btn btn-lg">Register</a></p>
+            </div>
             </form>
             {% for msg in messages %}
              <h2>{{msg}}</h2>

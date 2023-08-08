@@ -11,7 +11,7 @@ def login(request):
                                   password=password0)
         if user is not None:
             auth.login(request, user)
-            return redirect('/credentials_app/profile')
+            return redirect('/credentials_app/courses')
         else:
             messages.info(request, "invalid credentials")
             return redirect('login')
