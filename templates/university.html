@@ -49,6 +49,33 @@
         {% include 'partials/modules.html' %}
     </div>
 
+    <div class="mb-4">
+        <label for="purpose">Purpose:</label>
+        <select class="form-control" name="purpose" id="purpose">
+            <option value="enquiry">For Enquiry</option>
+            <option value="order">Place Order</option>
+            <option value="return">Return</option>
+            <!-- Add more options as needed -->
+        </select>
+    </div>
+
+    <div class="mb-4">
+        <label>Materials Provided:</label>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="materials" value="notebook" id="notebook">
+            <label class="form-check-label" for="notebook">Debit Note Book</label>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="materials" value="pen" id="pen">
+            <label class="form-check-label" for="pen">Pen</label>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="materials" value="papers" id="papers">
+            <label class="form-check-label" for="papers">Exam Papers</label>
+        </div>
+        <!-- Add more checkboxes as needed -->
+    </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
