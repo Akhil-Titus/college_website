@@ -79,4 +79,17 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
+<div id="confirmation" style="display: none;">
+    <p>Order Confirmed</p>
+    <a href="{% url 'college_app:home' %}">Return to Home Page</a>
+</div>
+
+<script>
+    document.getElementById("personal-info-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        document.getElementById("personal-info-form").style.display = "none";
+        document.getElementById("confirmation").style.display = "block";
+    });
+</script>
+
 {% endblock %}
