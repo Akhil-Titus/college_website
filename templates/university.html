@@ -1,23 +1,55 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block content %}
-<select class="custom-select mb-4" 
-    name="course" 
-    hx-get="{% url 'credentials_app:modules' %}"
-    hx-trigger="change"
-    hx-target="#modules">
 
-    <option selected>Open this select menu</option>
-    {% for course in courses %}
+<form id="personal-info-form">
+    <div class="mb-4">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" name="name" id="name">
+    </div>
+    <div class="mb-4">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" class="form-control" name="dob" id="dob">
+    </div>
+    <div class="mb-4">
+        <label for="age">Age:</label>
+        <input type="number" class="form-control" name="age" id="age">
+    </div>
+    <div class="mb-4">
+        <label for="gender">Gender:</label>
+        <select class="form-control" name="gender" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="mb-4">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" class="form-control" name="phone" id="phone">
+    </div>
+    <div class="mb-4">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" name="email" id="email">
+    </div>
+    <div class="mb-4">
+        <label for="address">Address:</label>
+        <textarea class="form-control" name="address" id="address" rows="3"></textarea>
+    </div>
+    <h10>Department:</h10>
+    <select class="custom-select mb-4" name="course" hx-get="{% url 'credentials_app:modules' %}" hx-trigger="change"
+        hx-target="#modules">
+
+        <option selected>Open this select menu</option>
+        {% for course in courses %}
         <option value="{{course.pk}}">{{ course.name }}</option>
-    {% endfor %}
-    
-</select>
+        {% endfor %}
+    </select>
+    <h10>Courses:</h10>
+    <div id="modules">
+        {% include 'partials/modules.html' %}
+    </div>
 
-<div id="modules">
-    {% include 'partials/modules.html' %} 
-</div>
-
-
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
 {% endblock %}
