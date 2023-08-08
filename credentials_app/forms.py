@@ -1,14 +1,19 @@
 from django import forms
-from .models import Department, Course
+from .models import Person, City
+class PersonCreationForm(forms.ModelForm):
+    class Meta:
+        model = Person
+        fields = '__all__'
 
-class FormAppForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    # Add other fields as required (DOB, AGE, GENDER, PHONE NUMBER, etc.)
-    dob = forms.CharField(max_length=100)
-    age = forms.CharField(max_length=100)
-    gender = forms.CharField(max_length=100)
-    phone = forms.CharField(max_length=100)
-    department = forms.ModelChoiceField(queryset=Department.objects.all())
-    course = forms.ModelChoiceField(queryset=Course.objects.all())
-    # course = forms.ModelChoiceField(queryset=Course.objects.none())
-    # Add other fields as required (purpose, Materials provide, etc.)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['city'].queryset = City.objects.none()
+
+        if 'country' in self.data:
+            try:
+                country_id = int(self.data.get('country'))
+                self.fields['city'].queryset = City.objects.filter(country_id=country_id).order_by('name')
+            except (ValueError, TypeError):
+                pass  # invalid input from the client; ignore and fallback to empty City queryset
+        elif self.instance.pk:
+            self.fields['city'].queryset = self.instance.country.city_set.order_by('name')
