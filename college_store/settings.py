@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-8gfg2(gn)sdql*a%zq-qccm2)=^30@0r!$)b+3&captn_7^jup
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,11 +77,13 @@ WSGI_APPLICATION = 'college_store.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangolearncolle$colege_app',
+        'USER': 'djangolearncolle',
+        'HOST': 'djangolearncollege.mysql.pythonanywhere-services.com',
+        'PASSWORD' : 'password@',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

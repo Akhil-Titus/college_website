@@ -14,7 +14,7 @@ def login(request):
             return redirect('/credentials_app/courses')
         else:
             messages.info(request, "invalid credentials")
-            return redirect('login')
+            return redirect('/credentials_app/login')
     return render(request, "login.html")
 
 def register(request):
